@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * This example creates a servlet using the @WebServlet annotation. Servlets can
@@ -48,11 +49,23 @@ public class AccountServlet extends HttpServlet {
                     .append("<div>")
                     .append("Customer: ").append(customerName)
                     .append("</div>")
+                    .append("<div>")
+                    .append("Number of visits: ").append(getNumberOfVisits(request))
+                    .append("</div>")
                     .append("</body>")
                     .append("</html>")
                     .toString();
             out.println(responseContent);
         }
+    }
+    
+    private int getNumberOfVisits(HttpServletRequest request) {
+        final String attrName = "numberOfVisits";
+        final Object attrValue = request.getSession().getAttribute(attrName);
+        final int numberOfVisits = attrValue != null ? (int) attrValue : 0;
+
+        request.getSession().setAttribute(attrName, numberOfVisits+1);
+        return numberOfVisits;
     }
 
 }
