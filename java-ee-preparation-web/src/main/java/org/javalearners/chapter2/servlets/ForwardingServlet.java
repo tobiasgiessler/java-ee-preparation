@@ -6,6 +6,7 @@
 package org.javalearners.chapter2.servlets;
 
 import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +24,11 @@ public class ForwardingServlet extends HttpServlet {
      * @param request servlet request
      * @param response servlet response
      * @throws IOException if an I/O error occurs
+     * @throws javax.servlet.ServletException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("http://localhost:8080/java-ee-preparation-web/account?customer=Homer Simpsons");
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        //response.sendRedirect("http://localhost:8080/java-ee-preparation-web/account?customer=Homer Simpsons");
+        request.getRequestDispatcher("accountServlet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -35,10 +38,11 @@ public class ForwardingServlet extends HttpServlet {
      * @param request servlet request
      * @param response servlet response
      * @throws IOException if an I/O error occurs
+     * @throws javax.servlet.ServletException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
         processRequest(request, response);
     }
 
@@ -48,10 +52,11 @@ public class ForwardingServlet extends HttpServlet {
      * @param request servlet request
      * @param response servlet response
      * @throws IOException if an I/O error occurs
+     * @throws javax.servlet.ServletException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
         processRequest(request, response);
     }
 
