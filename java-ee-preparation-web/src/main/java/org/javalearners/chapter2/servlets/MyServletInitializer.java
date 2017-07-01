@@ -8,7 +8,8 @@ import javax.servlet.ServletRegistration;
 
 /**
  * ServletContainerInitializer can be used to dynamically add servlets.
- * @author tobi
+ * TODO: Find out what needs to be done in order to use this servlet
+ * initializer.
  */
 public class MyServletInitializer implements ServletContainerInitializer {
 
