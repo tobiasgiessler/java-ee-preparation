@@ -1,4 +1,4 @@
-package org.javalearners.chapter4.rest;
+package org.javalearners.chapter4.rest.no1firstresource;
 
 import java.io.IOException;
 import java.io.PrintWriter;

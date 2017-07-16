@@ -1,4 +1,4 @@
-package org.javalearners.chapter4.rest;
+package org.javalearners.chapter4.rest.no1firstresource;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
