@@ -10,20 +10,20 @@ import javax.ws.rs.core.MediaType;
 
 @Path("resource")
 public class MyResource {
-    
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String get() {
-        //http://localhost:8080/java-ee-preparation-web/webresources/resource
+        //http://localhost:8080/java-ee-preparation-rest/webresources/resource
         System.out.println("get");
         return "foobar";
     }
-    
+
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public String post(
-            @FormParam("name") final String name, 
+            @FormParam("name") final String name,
             @FormParam("age") final String age) {
         System.out.println("post");
         System.out.println("name: " + name);
@@ -34,5 +34,5 @@ public class MyResource {
                 .append(" (").append(age).append(").")
                 .toString();
     }
-    
+
 }

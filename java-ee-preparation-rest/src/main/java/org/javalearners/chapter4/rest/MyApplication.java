@@ -5,11 +5,11 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import org.javalearners.chapter4.rest.no1firstresource.MyResource;
-import org.javalearners.chapter4.rest.no2async.OrderResource;
+import org.javalearners.chapter4.rest.example.OrderResource;
 
 @ApplicationPath("webresources")
 public class MyApplication extends Application {
-    
+
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> resources = new HashSet<>();
@@ -17,5 +17,5 @@ public class MyApplication extends Application {
         resources.add(OrderResource.class);
         return resources;
     }
-    
+
 }
