@@ -3,12 +3,14 @@ package org.javalearners.chapter4.rest.example;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -59,6 +61,16 @@ public class OrderResource {
                     Double.toString(orders.stream().mapToDouble(Order::getAmount).sum())
             );
         });
+    }
+
+    @POST
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_XML)
+    public Order createOrder(@FormParam("id") final int id, @FormParam("amount") final double amount) {
+        final Order order = new Order(id, amount);
+        orders.add(order);
+        return order;
     }
 
 }
