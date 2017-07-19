@@ -8,9 +8,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -71,6 +73,32 @@ public class OrderResource {
         final Order order = new Order(id, amount);
         orders.add(order);
         return order;
+    }
+
+    @PUT
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    public Order putXml(@PathParam("id") final int id, final String content) {
+        final Order order = getOrderById(id);
+        System.out.println("submitted content: " + content);
+        // do some updates based on content
+        return order;
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void deleteOrder(@PathParam("id") final int id) {
+        final Order order = getOrderById(id);
+        System.out.println("Removing order with id=" + id);
+        orders.remove(order);
+    }
+
+    private Order getOrderById(final int id) {
+        return orders.stream()
+                .filter(o -> o.getId() == id)
+                .findFirst()
+                .get();
     }
 
 }
