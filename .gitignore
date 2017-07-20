@@ -22,3 +22,4 @@
 hs_err_pid*
 /java-ee-preparation-web/target/
 /java-ee-preparation-rest/target/
+/messenger/target/

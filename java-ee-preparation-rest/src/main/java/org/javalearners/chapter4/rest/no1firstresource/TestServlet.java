@@ -2,8 +2,6 @@ package org.javalearners.chapter4.rest.no1firstresource;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
