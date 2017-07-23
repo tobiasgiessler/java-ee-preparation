@@ -12,7 +12,7 @@ public class MessageService {
 
     public MessageService() {
         messages.put(1L, new Message(1, "Hello World", "Max Mustermann"));
-        messages.put(2L, new Message(1, "Hello JAX-RS", "Max Mustermann"));
+        messages.put(2L, new Message(2, "Hello JAX-RS", "Max Mustermann"));
     }
 
     public List<Message> getAllMessages() {
@@ -38,8 +38,8 @@ public class MessageService {
         }
     }
 
-    public Message removeMessage(Message message) {
-        return messages.remove(message.getId());
+    public Message removeMessage(final long messageId) {
+        return messages.remove(messageId);
     }
 
 }
