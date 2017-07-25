@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.javalearners.messenger.database.DatabaseClass;
+import org.javalearners.messenger.model.Comment;
 import org.javalearners.messenger.model.Message;
 
 public class MessageService {
@@ -17,11 +18,16 @@ public class MessageService {
         final Message m2 = new Message(2, "Hello JAX-RS", "Max Mustermann");
         final Message m3 = new Message(3, "Hello 2016", "Max Mustermann");
         final Message m4 = new Message(4, "Hello 2015", "Max Mustermann");
+        
         final Calendar calendar = Calendar.getInstance();
         calendar.set(2016, Calendar.JUNE, 21);
         m3.setCreated(calendar.getTime());
         calendar.set(2015, Calendar.OCTOBER, 9);
         m4.setCreated(calendar.getTime());
+        
+        final Comment c1 = new Comment(1, "What a great message!", "Moe");
+        m1.getComments().put(c1.getId(), c1);
+        
         messages.put(m1.getId(), m1);
         messages.put(m2.getId(), m2);
         messages.put(m3.getId(), m3);

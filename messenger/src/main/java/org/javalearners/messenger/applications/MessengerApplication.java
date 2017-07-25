@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+import org.javalearners.messenger.resources.CommentResource;
 import org.javalearners.messenger.resources.InjectDemoResource;
 import org.javalearners.messenger.resources.MessageResource;
 import org.javalearners.messenger.resources.ProfileResource;
@@ -16,6 +17,7 @@ public class MessengerApplication extends Application {
         final Set<Class<?>> resources = new HashSet<>();
         resources.add(MessageResource.class);
         resources.add(ProfileResource.class);
+        resources.add(CommentResource.class);
         resources.add(InjectDemoResource.class);
         return resources;
     }

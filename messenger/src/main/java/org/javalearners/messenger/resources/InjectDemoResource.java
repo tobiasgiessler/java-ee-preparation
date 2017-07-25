@@ -10,7 +10,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 @Path("injectdemo")
 @Consumes(MediaType.TEXT_PLAIN)
@@ -48,6 +51,16 @@ public class InjectDemoResource {
     @Path("cookieparams")
     public String getCookieParam(@CookieParam("cookieName") final String cookieValue) {
         return "cookieName: " + cookieValue;
+    }
+    
+    @GET
+    @Path("context")
+    public String getParamsViaContext(
+            @Context UriInfo uriInfo, 
+            @Context HttpHeaders headers) {
+        final String absolutePath = uriInfo.getAbsolutePath().toString();
+        final String cookies = headers.getCookies().toString();
+        return "path: " + absolutePath + "\ncookies: " + cookies;
     }
     
 }

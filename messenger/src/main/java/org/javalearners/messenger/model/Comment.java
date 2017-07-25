@@ -1,24 +1,19 @@
 package org.javalearners.messenger.model;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import javax.xml.bind.annotation.XmlTransient;
 
-public class Message {
-
+public class Comment {
+    
     private long id;
     private String message;
-    private Date created;
     private String author;
-    private Map<Long, Comment> comments;
+    private Date created;
 
-    public Message() {
+    public Comment() {
         this.created = new Date();
-        this.comments = new HashMap<>();
     }
 
-    public Message(long id, String message, String author) {
+    public Comment(long id, String message, String author) {
         this();
         this.id = id;
         this.message = message;
@@ -41,14 +36,6 @@ public class Message {
         this.message = message;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -57,13 +44,12 @@ public class Message {
         this.author = author;
     }
 
-    @XmlTransient
-    public Map<Long, Comment> getComments() {
-        return comments;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setComments(Map<Long, Comment> comments) {
-        this.comments = comments;
+    public void setCreated(Date created) {
+        this.created = created;
     }
-
+    
 }
