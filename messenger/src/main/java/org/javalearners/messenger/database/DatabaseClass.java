@@ -8,13 +8,13 @@ import org.javalearners.messenger.model.Profile;
 public class DatabaseClass {
 
     private static final Map<Long, Message> MESSAGES = new HashMap<>();
-    private static final Map<Long, Profile> PROFILES = new HashMap<>();
+    private static final Map<String, Profile> PROFILES = new HashMap<>();
 
     public static Map<Long, Message> getMessages() {
         return MESSAGES;
     }
 
-    public static Map<Long, Profile> getProfiles() {
+    public static Map<String, Profile> getProfiles() {
         return PROFILES;
     }
 
