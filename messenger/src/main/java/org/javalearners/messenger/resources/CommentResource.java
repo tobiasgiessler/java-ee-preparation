@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import org.javalearners.messenger.model.Comment;
 import org.javalearners.messenger.service.CommentService;
 
+@Path("")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CommentResource {

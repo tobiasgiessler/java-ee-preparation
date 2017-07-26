@@ -3,6 +3,7 @@ package org.javalearners.messenger.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.NotFoundException;
 import org.javalearners.messenger.database.DatabaseClass;
 import org.javalearners.messenger.model.Comment;
 import org.javalearners.messenger.model.Message;
@@ -16,7 +17,15 @@ public class CommentService {
     }
 
     public Comment getComment(final long messageId, final long commentId) {
-        return messages.get(messageId).getComments().get(commentId);
+        final Message message = messages.get(messageId);
+        if (message == null) {
+            throw new NotFoundException();
+        }
+        final Comment comment = message.getComments().get(commentId);
+        if (comment == null) {
+            throw new NotFoundException();
+        }
+        return comment;
     }
 
     public Comment addComment(final long messageId, final Comment comment) {

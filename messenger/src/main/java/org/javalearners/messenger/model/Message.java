@@ -1,10 +1,15 @@
 package org.javalearners.messenger.model;
 
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 public class Message {
 
     private long id;
@@ -12,10 +17,12 @@ public class Message {
     private Date created;
     private String author;
     private Map<Long, Comment> comments;
+    private List<Link> links;
 
     public Message() {
         this.created = new Date();
         this.comments = new HashMap<>();
+        this.links = new ArrayList<>();
     }
 
     public Message(long id, String message, String author) {
@@ -23,6 +30,13 @@ public class Message {
         this.id = id;
         this.message = message;
         this.author = author;
+    }
+
+    public void addLink(final String uri, final String rel) {
+        final Link link = new Link();
+        link.setLink(uri);
+        link.setRel(rel);
+        links.add(link);
     }
 
     public long getId() {
@@ -64,6 +78,14 @@ public class Message {
 
     public void setComments(Map<Long, Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 
 }

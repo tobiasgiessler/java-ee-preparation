@@ -15,10 +15,10 @@ public class MessageService {
     private final Map<Long, Message> messages = DatabaseClass.getMessages();
 
     public MessageService() {
-        final Message m1 = new Message(1, "Hello World", "Max Mustermann");
-        final Message m2 = new Message(2, "Hello JAX-RS", "Max Mustermann");
-        final Message m3 = new Message(3, "Hello 2016", "Max Mustermann");
-        final Message m4 = new Message(4, "Hello 2015", "Max Mustermann");
+        final Message m1 = new Message(1, "Hello World", "hsimpson");
+        final Message m2 = new Message(2, "Hello JAX-RS", "hsimpson");
+        final Message m3 = new Message(3, "Hello 2016", "hsimpson");
+        final Message m4 = new Message(4, "Hello 2015", "hsimpson");
         
         final Calendar calendar = Calendar.getInstance();
         calendar.set(2016, Calendar.JUNE, 21);

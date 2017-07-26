@@ -7,6 +7,11 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 import org.javalearners.messenger.model.ErrorMessage;
 
+/**
+ * Class is currently not in use, since we aren't loading it in the 
+ * MessengerApplication class. It serves solely as an example on how to map 
+ * errors.
+ */
 @Provider
 public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
 
