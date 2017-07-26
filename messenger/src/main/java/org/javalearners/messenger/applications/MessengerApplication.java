@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import org.javalearners.messenger.exception.DataNotFoundExceptionMapper;
+import org.javalearners.messenger.exception.GenericExceptionMapper;
 import org.javalearners.messenger.resources.CommentResource;
 import org.javalearners.messenger.resources.InjectDemoResource;
 import org.javalearners.messenger.resources.MessageResource;
@@ -22,6 +23,7 @@ public class MessengerApplication extends Application {
         classes.add(InjectDemoResource.class);
         
         classes.add(DataNotFoundExceptionMapper.class);
+        classes.add(GenericExceptionMapper.class);
         return classes;
     }
 
