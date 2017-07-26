@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.javalearners.messenger.database.DatabaseClass;
+import org.javalearners.messenger.exception.DataNotFoundException;
 import org.javalearners.messenger.model.Comment;
 import org.javalearners.messenger.model.Message;
 
@@ -54,8 +55,13 @@ public class MessageService {
         ).collect(Collectors.toList());
     }
 
-    public Message getMessage(final long messageId) {
-        return messages.get(messageId);
+    public Message getMessage(final long messageId) throws DataNotFoundException {
+        final Message message = messages.get(messageId);
+        if (message == null) {
+            final String err = "Message with id " + messageId + " not found.";
+            throw new DataNotFoundException(err);
+        }
+        return message;
     }
 
     public Message addMessage(final Message message) {
