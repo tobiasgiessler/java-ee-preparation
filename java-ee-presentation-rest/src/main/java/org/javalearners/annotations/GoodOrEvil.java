@@ -1,5 +1,4 @@
 package org.javalearners.annotations;
 
-public @interface Good {
-    
+public @interface GoodOrEvil {
 }
