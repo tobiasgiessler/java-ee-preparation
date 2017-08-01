@@ -1,14 +1,15 @@
 package org.javalearners.annotations;
 
 public class Hijo {
-    
+
     private String nombre;
     private boolean dictador;
     private boolean inocente;
-    
+
+    @OrderPresent
     public void obsequiarAlgoAAlguien() {
-        System.out.println("Pide un regalo para " + nombre);
-    } 
+        System.out.println("Pide un regalo para " + nombre + " via SIA");
+    }
 
     public String getNombre() {
         return nombre;
@@ -34,5 +35,5 @@ public class Hijo {
     public void setInocente(boolean esInocente) {
         this.inocente = esInocente;
     }
-    
+
 }
