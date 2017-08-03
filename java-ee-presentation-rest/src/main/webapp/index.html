@@ -6,11 +6,61 @@
     </head>
     <body>
         <h1>JAX-RS Introduction</h1>
+        <h2>REST</h2>
+        <ul>
+            <li>Representational State Transfer</li>
+            <li>Resource URIs</li>
+            <li>HTTP Methods</li>
+            <li>Method Idempotence</li>
+            <li>
+                <ul>
+                    <li>Is a method repeadable, without causing additional side effects?</li>
+                    <li>GET - read only</li>
+                    <li>POST - creeate object (not idempotent => remeber browser warning)</li>
+                    <li>PUT - update object</li>
+                    <li>DELETE - delete object</li>
+                </ul>
+            </li>
+            <li>REST Responses</li>
+            <li>HATEOAS (Hypermedia As The Engine Of Application State)</li>
+            <li>
+                <ul>
+                    <li>Responses contains links to other resources</li>
+                </ul>
+            </li>
+            <li>The Richardson Maturity Model</li>
+            <li>
+                <ul>
+                    <li>Level 0: One URI, one HTTP method, Request body contains all the details.</li>
+                    <li>Level 1: Multiple URIs for multiple resources, one HTTP method, Request body contains all the details.</li>
+                    <li>Level 2: Multiple URIs for multiple resources, multiple HTTP methods and HTTP status codes.</li>
+                    <li>Level 3: Level 1 + HATEOAS</li>
+                </ul>
+            </li>
+            <li>What is JAX-RS</li>
+            <li>Intro to Annotations</li>
+        </ul>
+        <h2>Example</h2>
         <ul>
             <li>Create Application class</li>
-            <li>First get resource that answers with plain text</li>
-            <li>Introduc REST Client POSTMAN</li>
-            <li>First get resource that answers with XML</li>
+            <li>First get resource that returns plain text</li>
+            <li>First get resource that returns XML</li>
+            <li>Introduce REST client POSTMAN</li>
+            <li>Service stubs</li>
+            <li>Accessing path params</li>
+            <li>Return JSON - Fix error</li>
+            <li>Implement POST</li>
+            <li>Implement update</li>
+            <li>Implement delete</li>
+            <li>Pagination and filtering (year, start & size)</li>
+            <li>Param anntotations: QueryParam, PathParam, MatrixParam, CookieParam, HeaderParam</li>
+            <li>Content and BeanParam annotations (UriInfo, HttpHeaders)</li>
+            <li>Subresources</li>
+            <li>Status codes and location headers (Return object of class Response)</li>
+            <li>Handling exceptions (ExceptionMapper)</li>
+            <li>WebApplicationException (with Code or Response) (Already mapped by JAX-RS Jersey)</li>
+            <li>HATEOAS</li>
+            <li>Content Negotiation ( @Produces(value = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML}) )</li>
         </ul>
     </body>
 </html>
