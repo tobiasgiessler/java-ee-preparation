@@ -23,3 +23,5 @@ hs_err_pid*
 /java-ee-preparation-web/target/
 /java-ee-preparation-rest/target/
 /messenger/target/
+/java-ee-presentation-rest/target/
+/messenger/nbproject/

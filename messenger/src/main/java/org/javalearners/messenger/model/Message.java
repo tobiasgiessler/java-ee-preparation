@@ -1,6 +1,5 @@
 package org.javalearners.messenger.model;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
