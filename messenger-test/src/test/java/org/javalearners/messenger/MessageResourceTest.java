@@ -110,6 +110,15 @@ public class MessageResourceTest {
                 .body("links", anything())
                 .body("created", any(String.class));
     }
+    
+    @Test
+    public void deleteMessage() {
+        final int messageId = createMessage(testMessage);
+        
+        delete(webapiPath + "/messages/" + messageId)
+                .then()
+                .statusCode(HttpStatus.SC_NO_CONTENT);
+    }
 
     private int createMessage(JsonObject message) {
         final Response createResponse = given()
