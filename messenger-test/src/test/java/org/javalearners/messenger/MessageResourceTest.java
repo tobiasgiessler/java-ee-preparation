@@ -17,6 +17,10 @@ import static org.hamcrest.Matchers.*;
 public class MessageResourceTest {
 
     private final String webapiPath = "http://localhost:8080/messenger/webapi";
+    private final JsonObject testMessage = Json.createObjectBuilder()
+            .add("author", "mburns")
+            .add("message", "Excellent")
+            .build();
 
     public MessageResourceTest() {
     }
@@ -51,9 +55,21 @@ public class MessageResourceTest {
 
     @Test
     public void testGetMessages() {
-        get("http://localhost:8080/messenger/webapi/messages")
+        get(webapiPath + "/messages")
                 .then()
                 .statusCode(HttpStatus.SC_OK);
+    }
+
+    @Test
+    public void testGetMessage() {
+        final int messageId = createMessage(testMessage);
+
+        get(webapiPath + "/messages/" + messageId)
+                .then()
+                .body("author", equalTo(testMessage.getString("author")))
+                .body("message", equalTo(testMessage.getString("message")))
+                .body("links", anything())
+                .body("created", any(String.class));
     }
 
     @Test
@@ -73,5 +89,36 @@ public class MessageResourceTest {
                 .body("id", any(Integer.TYPE))
                 .body("links", anything())
                 .body("created", any(String.class));
+    }
+
+    @Test
+    public void updateMessage() {
+        final int messageId = createMessage(testMessage);
+        final JsonObject updatedMessage = Json.createObjectBuilder(testMessage)
+                .add("message", "updated message")
+                .build();
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(updatedMessage.toString())
+                .put(webapiPath + "/messages/" + messageId)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .body("author", equalTo(testMessage.getString("author")))
+                .body("message", equalTo(updatedMessage.getString("message")))
+                .body("id", any(Integer.TYPE))
+                .body("links", anything())
+                .body("created", any(String.class));
+    }
+
+    private int createMessage(JsonObject message) {
+        final Response createResponse = given()
+                .contentType(ContentType.JSON)
+                .body(message.toString())
+                .post(webapiPath + "/messages");
+
+        createResponse.then().statusCode(HttpStatus.SC_CREATED);
+
+        return createResponse.body().jsonPath().get("id");
     }
 }
