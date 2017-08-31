@@ -25,3 +25,5 @@ hs_err_pid*
 /messenger/target/
 /java-ee-presentation-rest/target/
 /messenger/nbproject/
+/messenger-test/nbproject/
+/messenger-test/target/
