@@ -29,3 +29,4 @@ hs_err_pid*
 /messenger-test/target/
 /java-ee-preparation/nbproject/private/
 /java-ee-preparation-cdi/target/
+/java-ee-preparation-cdi/nbproject/

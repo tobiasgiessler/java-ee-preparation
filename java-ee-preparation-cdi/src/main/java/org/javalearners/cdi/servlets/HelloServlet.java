@@ -13,7 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.javalearners.cdi.service.Greeting;
+import org.javalearners.cdi.service.GreetingService;
 import org.javalearners.cdi.service.Hello;
+import org.javalearners.cdi.service.Informal;
 
 /**
  *
@@ -24,6 +27,13 @@ public class HelloServlet extends HttpServlet {
 
     @Inject
     private Hello hello;
+    
+    @Inject
+    @Informal
+    private Greeting greeting;
+    
+    @Inject
+    private GreetingService greetingService;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,6 +56,8 @@ public class HelloServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>" + hello.sayHello("Max Power") + "</h1>");
+            out.println("<h2>" + greeting.greet("Mr. Burns") + "</h2>");
+            out.println("<h3>" + greetingService.phraseGreeting("Smithers") + "</h3>");
             out.println("</body>");
             out.println("</html>");
         }
