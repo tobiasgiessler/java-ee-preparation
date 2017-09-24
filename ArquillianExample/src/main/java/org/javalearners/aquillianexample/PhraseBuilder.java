@@ -11,8 +11,8 @@ public class PhraseBuilder {
 
     private Map<String, String> templates;
 
-    public String buildPhrase(String id, Object... args) {
-        return MessageFormat.format(templates.get(id), args);
+    public String buildPhrase(String templateId, Object... args) {
+        return MessageFormat.format(templates.get(templateId), args);
     }
 
     @PostConstruct
