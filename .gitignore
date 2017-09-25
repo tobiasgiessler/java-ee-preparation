@@ -27,3 +27,9 @@ hs_err_pid*
 /messenger/nbproject/
 /messenger-test/nbproject/
 /messenger-test/target/
+/java-ee-preparation/nbproject/private/
+/java-ee-preparation-cdi/target/
+/java-ee-preparation-cdi/nbproject/
+/AquillianExample/target/
+/ArquillianExample/target/
+/ArquillianExample/nbproject/
